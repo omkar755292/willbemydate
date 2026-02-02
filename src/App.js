@@ -53,6 +53,25 @@ function App() {
     }
   }, [accepted, moveNoSomewhereElse]);
 
+  const dodgeIfClose = useCallback(
+    (clientX, clientY) => {
+      const btn = noRef.current;
+      if (!btn) return;
+
+      const r = btn.getBoundingClientRect();
+      const cx = r.left + r.width / 2;
+      const cy = r.top + r.height / 2;
+      const dx = clientX - cx;
+      const dy = clientY - cy;
+      const dist = Math.hypot(dx, dy);
+
+      if (dist < 90) {
+        moveNoSomewhereElse();
+      }
+    },
+    [moveNoSomewhereElse]
+  );
+
   if (accepted) {
     return (
       <div className="App">
@@ -80,7 +99,15 @@ function App() {
           <h1 className="title">Divya, will you go on a date with me?</h1>
           <p className="subtitle">One cute “yes” and I’ll plan something special.</p>
 
-          <div className="actions" ref={actionsRef}>
+          <div
+            className="actions"
+            ref={actionsRef}
+            onPointerMove={(e) => dodgeIfClose(e.clientX, e.clientY)}
+            onTouchMove={(e) => {
+              const t = e.touches?.[0];
+              if (t) dodgeIfClose(t.clientX, t.clientY);
+            }}
+          >
             <button className="btn btnYes" onClick={() => setAccepted(true)}>
               <span className="btnYesLabel">Yes</span>
             </button>
@@ -95,6 +122,8 @@ function App() {
                 e.preventDefault();
                 moveNoSomewhereElse();
               }}
+              onTouchStart={moveNoSomewhereElse}
+              onTouchMove={moveNoSomewhereElse}
               onFocus={moveNoSomewhereElse}
               type="button"
             >
