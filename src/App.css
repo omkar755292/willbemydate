@@ -1,0 +1,127 @@
+.App {
+  min-height: 100vh;
+}
+
+.screen {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: radial-gradient(1200px 600px at 20% 10%, #ffe7ef 0%, rgba(255, 231, 239, 0) 55%),
+    radial-gradient(900px 500px at 80% 30%, #e7f0ff 0%, rgba(231, 240, 255, 0) 55%),
+    linear-gradient(180deg, #0b1020 0%, #0f1630 100%);
+}
+
+.card {
+  width: min(720px, 100%);
+  padding: 28px 24px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.35);
+  text-align: center;
+}
+
+.title {
+  margin: 0 0 10px;
+  font-size: clamp(30px, 4.2vw, 48px);
+  line-height: 1.05;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.actions {
+  margin-top: 26px;
+  position: relative;
+  height: 220px;
+}
+
+.btn {
+  border: 0;
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: 14px;
+  transition: transform 120ms ease, filter 120ms ease, box-shadow 120ms ease;
+  user-select: none;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btnYes {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  margin-top: 70px;
+  background: #ff2e6f;
+  color: #0b1020;
+  transform: rotate(45deg);
+  box-shadow: 0 16px 40px rgba(255, 77, 141, 0.35);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnYes::before,
+.btnYes::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: #ff2e6f;
+  border-radius: 50%;
+}
+
+.btnYes::before {
+  top: -30px;
+  left: 0;
+}
+
+.btnYes::after {
+  left: -30px;
+  top: 0;
+}
+
+.btnYesLabel {
+  position: relative;
+  z-index: 1;
+  transform: rotate(-45deg);
+  font-size: 14px;
+}
+
+.btnYes:hover {
+  filter: brightness(1.06);
+}
+
+.btnNo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 13px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  touch-action: none;
+  z-index: 2;
+}
+
+.btnPrimary {
+  margin-top: 18px;
+  font-size: 16px;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
